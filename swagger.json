@@ -1,0 +1,153 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Red Social en Nodejs",
+      "version": "1.0.0",
+      "title": "Red Social"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "tags": [
+      {
+        "name": "user",
+        "description": "Operations about user"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/user": {
+        "get": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Get list of users",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "getUsers",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "default": {
+              "description": "list of users"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Create user",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "createUser",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Created user object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Modify user's features",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "modifyFeature",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Modify the name of the user",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Remove user",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "deleteUser",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Delete user object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "externalDocs": {
+      "description": "Find out more about Swagger",
+      "url": "http://swagger.io"
+    }
+  }

@@ -1,0 +1,29 @@
+pm2 status                              # muestra los procesos activos
+pm2 start api_path                      # Inicio de procesos y microservicios 
+    pm2 start api/index.js
+    pm2 start mysql/index.js
+    pm2 start cache/index.js
+    pm2 start post/index.js
+
+pm2 start api_path --name alias         # Inicia procesos con un alias para distinguirlos
+    pm2 start api/index.js --name api-principal
+
+pm2 restart process index   
+    pm2 restart 3
+
+pm2 stop process index 
+    pm2 stop 0 1 2
+
+pm2 logs                                # muestra los outputs de los procesos activos
+pm2 logs process index                  # muestra los outputs de un servicio en particular
+    pm2 logs 0
+
+Caracteristicas
+    Si algun servicio se cae, pm2 lo reinicia automaticamente
+    Los logs se guardan en archivos ocultos creados para cada procesos
+        C:\Users\SANTIAGO\.pm2\logs\index-error.log last 15 lines:
+    
+    Permite crear un archivo ecosystem.config.js de configuración de todas las apis 
+    y poderlas levantar o reiniciar.
+        pm2 start ecosystem.config.js --env [development|production]
+

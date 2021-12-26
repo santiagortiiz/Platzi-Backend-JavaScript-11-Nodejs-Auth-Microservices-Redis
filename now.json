@@ -1,0 +1,41 @@
+{
+    "version": 2,
+    "env": {
+        "HOST": "http://localhost",
+        "PORT": "3000",
+        "JWT_SECRET": "notasecreta",
+        "MYSQL_HOST": "remotemysql.com",
+        "MYSQL_USER": "UOeN2h7N27",
+        "MYSQL_PASSWORD": "fgcy34vYf8",
+        "MYSQL_DATABASE": "UOeN2h7N27",
+        "REMOTE_DB": "false",
+        "MYSQL_SERVICE_HOST": "localhost",
+        "MYSQL_SERVICE_PORT": "3001",
+        "POST_HOST": "localhost",
+        "POST_PORT": "3002"
+    },
+    "builds": [
+        {
+            "src": "/api/index.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "/post/index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/auth(.*)",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/api/user(.*)",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/api/post(.*)",
+            "dest": "/post/index.js"
+        }
+    ]
+}
